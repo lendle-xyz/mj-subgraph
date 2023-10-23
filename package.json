@@ -1,0 +1,32 @@
+{
+  "name": "mj-subgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "create-local": "graph create --node http://localhost:8020/ mj",
+    "remove-local": "graph remove --node http://localhost:8020/ mj",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 mj",
+    "test": "graph test",
+    "setup": "yarn codegen && yarn create-local && yarn deploy-local",
+    "prepare:mantle": "yarn codegen && yarn build",
+    "create:mantle": "graph create mj-subgraph --node https://subgraph-rpc.lendle.xyz",
+    "deploy:mantle": "yarn prepare:mantle && graph deploy --ipfs https://api.thegraph.com/ipfs/ --node https://subgraph-rpc.lendle.xyz mj-subgraph"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lendle-xyz/mj-subgraph.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lendle-xyz/mj-subgraph/issues"
+  },
+  "homepage": "https://github.com/lendle-xyz/mj-subgraph#readme",
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.58.0",
+    "@graphprotocol/graph-ts": "^0.31.0"
+  }
+}
